@@ -1,3 +1,5 @@
+---
+---
 /* ===========================
    JEAN-JACQUES SOLEIL
    Aesthetic: Manga editorial
@@ -283,11 +285,10 @@ body {
 .mechanic__title em { font-style: italic; color: var(--gray-light); }
 .color-states { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
 .color-state { display: flex; flex-direction: column; overflow: hidden; }
-.color-swatch { height: 140px; transition: height 0.3s ease; }
+.color-swatch { height: 140px; }
 .color-state--full .color-swatch { background: linear-gradient(135deg, #e8601a 0%, #c0e040 50%, #2b9fd8 100%); }
 .color-state--muted .color-swatch { background: linear-gradient(135deg, #7a4020 0%, #5a6020 50%, #204050 100%); filter: saturate(0.4); }
 .color-state--gray .color-swatch { background: linear-gradient(135deg, #555 0%, #888 50%, #333 100%); filter: saturate(0); }
-.color-state:hover .color-swatch { height: 160px; }
 .color-info {
   padding: 1.5rem;
   background: rgba(255,255,255,0.03);
@@ -300,25 +301,86 @@ body {
 }
 .color-info p { font-size: 0.88rem; color: var(--gray-light); line-height: 1.5; }
 
-/* PUZZLES */
-.puzzles {
-  background: var(--black); padding: 7rem 3rem;
-  border-top: 1px solid rgba(255,255,255,0.05);
+/* METRO MAP SVG */
+.metro-map-container {
+  width: 100%;
+  max-width: 360px;
 }
-.puzzles__inner { max-width: 1000px; margin: 0 auto; }
-.puzzles__title {
+#metro-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.metro-map-container .panel__caption {
+  font-family: var(--mono); font-size: 0.65rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(245,241,234,0.3); text-align: center;
+  padding: 0.75rem 0.5rem 0; line-height: 1.6;
+}
+
+/* PRÓXIMAMENTE */
+.proximamente {
+  background: #312e81;
+  padding: 8rem 3rem;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.proximamente::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(99,102,241,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 50%, rgba(165,180,252,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+.proximamente__inner {
+  position: relative; z-index: 1;
+  max-width: 680px; margin: 0 auto;
+}
+.proximamente__title {
   font-family: var(--display);
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  line-height: 1.1; margin-bottom: 1.5rem; color: var(--white);
+  font-size: clamp(3rem, 8vw, 6rem);
+  color: var(--white);
+  line-height: 1.0;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
 }
-.puzzles__body { font-size: 1rem; color: var(--gray-light); max-width: 550px; margin-bottom: 4rem; line-height: 1.7; }
-.puzzles__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.06); }
-.puzzle-card { background: var(--black); padding: 2.5rem 2rem; transition: background 0.25s; }
-.puzzle-card:hover { background: #111; }
-.puzzle-card--mid { background: #0e0e0e; border-left: 2px solid var(--orange); border-right: 2px solid var(--orange); }
-.puzzle-card__num { font-family: var(--mono); font-size: 0.65rem; color: var(--orange); letter-spacing: 0.15em; margin-bottom: 1rem; }
-.puzzle-card__title { font-family: var(--serif-alt); font-size: 1.3rem; color: var(--white); margin-bottom: 0.75rem; }
-.puzzle-card__desc { font-size: 0.88rem; color: var(--gray-mid); line-height: 1.6; }
+.proximamente__body {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  color: rgba(199,210,254,0.75);
+  line-height: 1.75;
+  margin-bottom: 3.5rem;
+}
+
+/* SOCIAL ICONS */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  align-items: center;
+}
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(199,210,254,0.25);
+  color: rgba(199,210,254,0.6);
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.2s;
+}
+.social-icon svg {
+  width: 22px; height: 22px;
+}
+.social-icon:hover {
+  border-color: rgba(199,210,254,0.8);
+  color: var(--white);
+  background: rgba(199,210,254,0.08);
+  transform: translateY(-2px);
+}
 
 /* NEWSLETTER */
 .newsletter {
@@ -385,14 +447,14 @@ body {
   .origin { grid-template-columns: 1fr; }
   .origin__col--visual { border-left: none; border-top: 1px solid rgba(255,255,255,0.07); padding: 4rem 2rem; }
   .color-states { grid-template-columns: 1fr; gap: 2px; }
-  .puzzles__grid { grid-template-columns: 1fr; }
-  .puzzle-card--mid { border-left: none; border-right: none; border-top: 2px solid var(--orange); border-bottom: 2px solid var(--orange); }
+  .metro-map-container { max-width: 100%; }
 }
 @media (max-width: 600px) {
   .nav { padding: 1.5rem; }
-  .hero, .statement, .origin__col, .mechanic, .puzzles, .newsletter, .footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .hero, .statement, .origin__col, .mechanic, .proximamente, .newsletter, .footer { padding-left: 1.5rem; padding-right: 1.5rem; }
   .substack-card__form { flex-direction: column; }
   .footer__inner { flex-direction: column; align-items: flex-start; }
+  .social-icons { gap: 1.2rem; }
 }
 
 /* SCROLL REVEAL (JS-driven) */
