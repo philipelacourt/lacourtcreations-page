@@ -59,137 +59,268 @@ permalink: /
   <div class="origin__col origin__col--visual">
     <div class="origin__panel">
       <div class="metro-map-container">
-        <svg id="metro-svg" viewBox="0 0 340 480" xmlns="http://www.w3.org/2000/svg" aria-label="Mapa del Metro de Santiago">
+        <svg id="metro-svg" viewBox="0 0 500 620" xmlns="http://www.w3.org/2000/svg" aria-label="Mapa del Metro de Santiago · Líneas 1, 2, 4 y 5">
+          <defs>
+            <style>
+              .st { font-family: 'IBM Plex Mono', monospace; font-size: 8px; fill: rgba(245,241,234,0.55); }
+              .st-hi { font-family: 'IBM Plex Mono', monospace; font-size: 8.5px; fill: #c084f5; font-weight: bold; }
+              .st-xfer { font-family: 'IBM Plex Mono', monospace; font-size: 7.5px; fill: rgba(245,241,234,0.65); }
+            </style>
+          </defs>
 
-          <!-- LÍNEA 2 (naranja) vertical izquierda -->
-          <line x1="80" y1="30" x2="80" y2="450" stroke="#f47920" stroke-width="5" stroke-linecap="round"/>
+          <!-- ===================== TRAZADOS ===================== -->
 
-          <!-- LÍNEA 5 (verde) horizontal inferior -->
-          <line x1="30" y1="370" x2="310" y2="370" stroke="#00a84f" stroke-width="5" stroke-linecap="round"/>
+          <!-- LÍNEA 2 (amarilla) Norte→Sur vertical, con quiebre diagonal hacia La Cisterna -->
+          <!-- Tramo norte: Vespucio Norte → Cal y Canto (vertical) -->
+          <polyline points="210,18 210,218" fill="none" stroke="#f5c900" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Tramo diagonal Cal y Canto → Parque O'Higgins -->
+          <polyline points="210,218 190,258 190,278 190,318 190,338" fill="none" stroke="#f5c900" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Parque O'Higgins → Franklin → La Cisterna (baja verticalmente) -->
+          <polyline points="190,338 190,358 190,378 190,398 190,418 190,438 190,468 190,498 190,530 190,560 190,590" fill="none" stroke="#f5c900" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
 
-          <!-- LÍNEA 1 (roja) horizontal media -->
-          <line x1="30" y1="200" x2="310" y2="200" stroke="#e3001b" stroke-width="5" stroke-linecap="round"/>
+          <!-- LÍNEA 1 (roja) San Pablo → Los Dominicos horizontal con leve diagonal oriente -->
+          <polyline points="18,218 50,218 80,218 110,218 140,218 160,218 180,218 210,218 230,218 250,218 270,218 290,218 310,218 330,218 350,218 370,218 390,218 410,218 430,218 460,218 480,210" fill="none" stroke="#e3001b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
 
-          <!-- LÍNEA 4 (azul) vertical derecha -->
-          <line x1="240" y1="30" x2="240" y2="300" stroke="#1d4fa3" stroke-width="5" stroke-linecap="round"/>
-          <!-- L4 baja diagonal a L5 -->
-          <line x1="240" y1="300" x2="310" y2="370" stroke="#1d4fa3" stroke-width="5" stroke-linecap="round"/>
+          <!-- LÍNEA 4 (azul) Tobalaba → Plaza de Puente Alto (baja vertical, luego quiebre) -->
+          <!-- Tobalaba → Los Leones sube levemente hacia el norte desde L1 -->
+          <polyline points="310,218 310,180 310,150 310,120 310,80 310,50 310,18" fill="none" stroke="#1d4fa3" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Tobalaba → baja sur: Cristóbal Colón → ... → Vicuña Mackenna diagonal → Plaza P. Alto -->
+          <polyline points="310,218 310,258 310,288 310,318 310,348 310,378 310,408 310,438 310,468 330,498 350,530 370,560 390,590" fill="none" stroke="#1d4fa3" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
 
-          <!-- LÍNEA 2 estaciones (de norte a sur) -->
-          <!-- Cal y Canto (intersección L2-L5 norte... en realidad L2-L1) -->
-          <circle cx="80" cy="200" r="7" fill="#0a0a0a" stroke="#e3001b" stroke-width="3"/>
-          <text x="88" y="196" fill="rgba(245,241,234,0.5)" font-size="7" font-family="IBM Plex Mono, monospace">Cal y Canto</text>
+          <!-- LÍNEA 5 (verde) Plaza de Maipú → Vicente Valdés horizontal con quiebre oriente -->
+          <polyline points="18,338 40,338 60,338 80,338 100,338 120,338 140,338 160,338 180,338 190,338 210,338 230,338 250,338 270,338 290,338 310,338 330,338 350,338 370,338 390,350 390,590" fill="none" stroke="#00a84f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
 
-          <!-- Baquedano L2 -->
-          <circle cx="80" cy="240" r="6" fill="#0a0a0a" stroke="#f47920" stroke-width="2.5"/>
-          <text x="88" y="244" fill="rgba(245,241,234,0.4)" font-size="6.5" font-family="IBM Plex Mono, monospace">Baquedano</text>
+          <!-- ===================== TRANSBORDOS (encima de líneas) ===================== -->
 
-          <!-- Santa Isabel L2 -->
-          <circle cx="80" cy="280" r="6" fill="#0a0a0a" stroke="#f47920" stroke-width="2.5"/>
-          <text x="88" y="284" fill="rgba(245,241,234,0.4)" font-size="6.5" font-family="IBM Plex Mono, monospace">Santa Isabel</text>
+          <!-- Cal y Canto: L1 + L2 -->
+          <circle cx="210" cy="218" r="9" fill="#1a1a1a" stroke="#e3001b" stroke-width="3"/>
+          <circle cx="210" cy="218" r="5" fill="#f5c900"/>
+          <text x="216" y="214" class="st-xfer">Cal y Canto</text>
 
-          <!-- Parque O'Higgins L2–L5 -->
-          <circle cx="80" cy="370" r="9" fill="#0a0a0a" stroke="#00a84f" stroke-width="3"/>
-          <circle cx="80" cy="370" r="5" fill="#f47920"/>
-          <text x="90" y="367" fill="rgba(245,241,234,0.5)" font-size="7" font-family="IBM Plex Mono, monospace">Parque O'Higgins</text>
+          <!-- Baquedano: L1 + L2 -->
+          <circle cx="250" cy="218" r="9" fill="#1a1a1a" stroke="#e3001b" stroke-width="3"/>
+          <circle cx="250" cy="218" r="5" fill="#f5c900"/>
+          <text x="256" y="214" class="st-xfer">Baquedano</text>
 
-          <!-- Toesca L2 -->
-          <circle cx="80" cy="325" r="6" fill="#0a0a0a" stroke="#f47920" stroke-width="2.5"/>
-          <text x="88" y="329" fill="rgba(245,241,234,0.4)" font-size="6.5" font-family="IBM Plex Mono, monospace">Toesca</text>
+          <!-- U. de Chile: L1 + L2 — ESTACIÓN DESTACADA -->
+          <circle cx="230" cy="218" r="12" fill="#1a1a1a" stroke="#c084f5" stroke-width="2.5"/>
+          <circle cx="230" cy="218" r="7" fill="#c084f5"/>
+          <text x="236" y="212" class="st-hi">U. de Chile</text>
+          <circle cx="230" cy="218" r="18" fill="none" stroke="#c084f5" stroke-width="1" stroke-dasharray="3,3" opacity="0.5">
+            <animate attributeName="r" values="16;22;16" dur="2.5s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.5;0.1;0.5" dur="2.5s" repeatCount="indefinite"/>
+          </circle>
 
-          <!-- LÍNEA 1 estaciones (oeste→este) -->
-          <!-- San Pablo -->
-          <circle cx="30" cy="200" r="5" fill="#0a0a0a" stroke="#e3001b" stroke-width="2"/>
-          <text x="36" y="196" fill="rgba(245,241,234,0.35)" font-size="6" font-family="IBM Plex Mono, monospace">San Pablo</text>
+          <!-- Tobalaba: L1 + L4 -->
+          <circle cx="310" cy="218" r="9" fill="#1a1a1a" stroke="#e3001b" stroke-width="3"/>
+          <circle cx="310" cy="218" r="5" fill="#1d4fa3"/>
+          <text x="316" y="214" class="st-xfer">Tobalaba</text>
+
+          <!-- Parque O'Higgins: L2 + L5 -->
+          <circle cx="190" cy="338" r="9" fill="#1a1a1a" stroke="#f5c900" stroke-width="3"/>
+          <circle cx="190" cy="338" r="5" fill="#00a84f"/>
+          <text x="196" y="334" class="st-xfer">Pq. O'Higgins</text>
+
+          <!-- Vicente Valdés: L4 + L5 -->
+          <circle cx="390" cy="338" r="9" fill="#1a1a1a" stroke="#1d4fa3" stroke-width="3"/>
+          <circle cx="390" cy="338" r="5" fill="#00a84f"/>
+          <text x="370" y="352" class="st-xfer">V. Valdés</text>
+
+          <!-- ===================== LÍNEA 1 — estaciones simples ===================== -->
+          <!-- San Pablo (oeste) -->
+          <circle cx="18" cy="218" r="5" fill="#1a1a1a" stroke="#e3001b" stroke-width="2"/>
+          <text x="10" y="232" class="st">San Pablo</text>
 
           <!-- Pajaritos -->
-          <circle cx="60" cy="200" r="5" fill="#0a0a0a" stroke="#e3001b" stroke-width="2"/>
+          <circle cx="50" cy="218" r="4" fill="#1a1a1a" stroke="#e3001b" stroke-width="2"/>
 
-          <!-- Universidad de Santiago -->
-          <circle cx="110" cy="200" r="6" fill="#0a0a0a" stroke="#e3001b" stroke-width="2.5"/>
-          <text x="114" y="194" fill="rgba(245,241,234,0.4)" font-size="6" font-family="IBM Plex Mono, monospace">U. de Santiago</text>
+          <!-- Lo Prado / Neptuno / Blanqueado — grupos pequeños -->
+          <circle cx="70" cy="218" r="4" fill="#1a1a1a" stroke="#e3001b" stroke-width="2"/>
+          <circle cx="90" cy="218" r="4" fill="#1a1a1a" stroke="#e3001b" stroke-width="2"/>
+          <circle cx="110" cy="218" r="4" fill="#1a1a1a" stroke="#e3001b" stroke-width="2"/>
+          <circle cx="130" cy="218" r="4" fill="#1a1a1a" stroke="#e3001b" stroke-width="2"/>
 
-          <!-- Estación Central -->
-          <circle cx="140" cy="200" r="6" fill="#0a0a0a" stroke="#e3001b" stroke-width="2.5"/>
-          <text x="144" y="194" fill="rgba(245,241,234,0.4)" font-size="6" font-family="IBM Plex Mono, monospace">Est. Central</text>
+          <!-- U. de Santiago -->
+          <circle cx="150" cy="218" r="5" fill="#1a1a1a" stroke="#e3001b" stroke-width="2"/>
+          <text x="136" y="210" class="st">U.Stgo</text>
 
-          <!-- Universidad de Chile L1 — ESTACIÓN DESTACADA -->
-          <circle cx="175" cy="200" r="10" fill="#c084f5" stroke="#c084f5" stroke-width="2"/>
-          <circle cx="175" cy="200" r="6" fill="#2b1c6e"/>
-          <text x="180" y="192" fill="#c084f5" font-size="7.5" font-weight="bold" font-family="IBM Plex Mono, monospace">U. de Chile</text>
+          <!-- Est. Central -->
+          <circle cx="170" cy="218" r="5" fill="#1a1a1a" stroke="#e3001b" stroke-width="2"/>
+          <text x="156" y="210" class="st">Est.Cen.</text>
+
+          <!-- La Moneda / U.de Chile / Sta. Lucía / U.Católica ya están -->
 
           <!-- Santa Lucía -->
-          <circle cx="200" cy="200" r="6" fill="#0a0a0a" stroke="#e3001b" stroke-width="2.5"/>
-          <text x="204" y="194" fill="rgba(245,241,234,0.4)" font-size="6" font-family="IBM Plex Mono, monospace">Santa Lucía</text>
+          <circle cx="240" cy="218" r="5" fill="#1a1a1a" stroke="#e3001b" stroke-width="2"/>
+          <text x="242" y="232" class="st">Sta. Lucía</text>
 
-          <!-- Baquedano L1 (transbordo L2) -->
-          <circle cx="80" cy="200" r="9" fill="#0a0a0a" stroke="#f47920" stroke-width="3"/>
-          <circle cx="80" cy="200" r="5" fill="#e3001b"/>
-
-          <!-- Universidad Católica -->
-          <circle cx="225" cy="200" r="6" fill="#0a0a0a" stroke="#e3001b" stroke-width="2.5"/>
-          <text x="229" y="194" fill="rgba(245,241,234,0.4)" font-size="6" font-family="IBM Plex Mono, monospace">U. Católica</text>
-
-          <!-- Tobalaba L1–L4 transbordo -->
-          <circle cx="240" cy="200" r="9" fill="#0a0a0a" stroke="#1d4fa3" stroke-width="3"/>
-          <circle cx="240" cy="200" r="5" fill="#e3001b"/>
-          <text x="246" y="194" fill="rgba(245,241,234,0.4)" font-size="6" font-family="IBM Plex Mono, monospace">Tobalaba</text>
+          <!-- U. Católica -->
+          <circle cx="270" cy="218" r="5" fill="#1a1a1a" stroke="#e3001b" stroke-width="2"/>
+          <text x="272" y="232" class="st">U.Católica</text>
 
           <!-- Escuela Militar -->
-          <circle cx="270" cy="200" r="6" fill="#0a0a0a" stroke="#e3001b" stroke-width="2.5"/>
-          <text x="275" y="194" fill="rgba(245,241,234,0.4)" font-size="6" font-family="IBM Plex Mono, monospace">Esc. Militar</text>
+          <circle cx="330" cy="218" r="5" fill="#1a1a1a" stroke="#e3001b" stroke-width="2"/>
+          <text x="332" y="232" class="st">Esc. Militar</text>
 
           <!-- Manquehue -->
-          <circle cx="295" cy="200" r="5" fill="#0a0a0a" stroke="#e3001b" stroke-width="2"/>
+          <circle cx="350" cy="218" r="4" fill="#1a1a1a" stroke="#e3001b" stroke-width="2"/>
 
-          <!-- Las Condes -->
-          <circle cx="310" cy="200" r="5" fill="#0a0a0a" stroke="#e3001b" stroke-width="2"/>
-          <text x="295" y="213" fill="rgba(245,241,234,0.35)" font-size="6" font-family="IBM Plex Mono, monospace">Las Condes</text>
+          <!-- El Golf -->
+          <circle cx="370" cy="218" r="4" fill="#1a1a1a" stroke="#e3001b" stroke-width="2"/>
 
-          <!-- LÍNEA 4 estaciones (norte→sur) -->
-          <!-- Tobalaba ya está -->
-          <circle cx="240" cy="240" r="5" fill="#0a0a0a" stroke="#1d4fa3" stroke-width="2"/>
-          <text x="246" y="244" fill="rgba(245,241,234,0.35)" font-size="6" font-family="IBM Plex Mono, monospace">Cristóbal Colón</text>
+          <!-- Alcántara -->
+          <circle cx="390" cy="218" r="4" fill="#1a1a1a" stroke="#e3001b" stroke-width="2"/>
 
-          <circle cx="240" cy="270" r="5" fill="#0a0a0a" stroke="#1d4fa3" stroke-width="2"/>
-          <text x="246" y="274" fill="rgba(245,241,234,0.35)" font-size="6" font-family="IBM Plex Mono, monospace">Francisco Bilbao</text>
+          <!-- Los Presidentes / Hernando de Magallanes / Los Dominicos -->
+          <circle cx="415" cy="218" r="4" fill="#1a1a1a" stroke="#e3001b" stroke-width="2"/>
+          <circle cx="440" cy="218" r="4" fill="#1a1a1a" stroke="#e3001b" stroke-width="2"/>
+          <circle cx="480" cy="210" r="5" fill="#1a1a1a" stroke="#e3001b" stroke-width="2"/>
+          <text x="462" y="205" class="st">Los Dominicos</text>
 
-          <!-- Vicente Valdés L4–L5 transbordo -->
-          <circle cx="310" cy="370" r="9" fill="#0a0a0a" stroke="#1d4fa3" stroke-width="3"/>
-          <circle cx="310" cy="370" r="5" fill="#00a84f"/>
-          <text x="280" y="385" fill="rgba(245,241,234,0.4)" font-size="6.5" font-family="IBM Plex Mono, monospace">V. Valdés</text>
+          <!-- ===================== LÍNEA 2 — estaciones simples ===================== -->
+          <!-- Norte: Vespucio Norte -->
+          <circle cx="210" cy="18" r="5" fill="#1a1a1a" stroke="#f5c900" stroke-width="2"/>
+          <text x="216" y="22" class="st">Vespucio N.</text>
 
-          <!-- LÍNEA 5 estaciones clave -->
-          <!-- Baquedano L5 (occidental) -->
-          <circle cx="110" cy="370" r="5" fill="#0a0a0a" stroke="#00a84f" stroke-width="2"/>
-          <text x="114" y="367" fill="rgba(245,241,234,0.35)" font-size="6" font-family="IBM Plex Mono, monospace">Quinta Normal</text>
+          <!-- Zapadores / Dorsal / Einstein / Cementerios / Cerro Blanco -->
+          <circle cx="210" cy="50" r="4" fill="#1a1a1a" stroke="#f5c900" stroke-width="2"/>
+          <circle cx="210" cy="78" r="4" fill="#1a1a1a" stroke="#f5c900" stroke-width="2"/>
+          <circle cx="210" cy="106" r="4" fill="#1a1a1a" stroke="#f5c900" stroke-width="2"/>
+          <circle cx="210" cy="134" r="4" fill="#1a1a1a" stroke="#f5c900" stroke-width="2"/>
+          <circle cx="210" cy="162" r="4" fill="#1a1a1a" stroke="#f5c900" stroke-width="2"/>
+          <circle cx="210" cy="190" r="4" fill="#1a1a1a" stroke="#f5c900" stroke-width="2"/>
+          <text x="216" y="50" class="st">Zapadores</text>
+          <text x="216" y="106" class="st">Einstein</text>
+          <text x="216" y="162" class="st">Hospitales</text>
 
-          <circle cx="145" cy="370" r="5" fill="#0a0a0a" stroke="#00a84f" stroke-width="2"/>
-          <text x="149" y="367" fill="rgba(245,241,234,0.35)" font-size="6" font-family="IBM Plex Mono, monospace">Pudahuel</text>
+          <!-- Sur de L2: Toesca, Santa Isabel, Parque Bustamante, Matta, Irarrazaval, Nuble, Bío Bío... -->
+          <circle cx="190" cy="258" r="4" fill="#1a1a1a" stroke="#f5c900" stroke-width="2"/>
+          <text x="155" y="262" class="st">Toesca</text>
+          <circle cx="190" cy="278" r="4" fill="#1a1a1a" stroke="#f5c900" stroke-width="2"/>
+          <text x="150" y="282" class="st">Sta. Isabel</text>
+          <circle cx="190" cy="298" r="4" fill="#1a1a1a" stroke="#f5c900" stroke-width="2"/>
+          <text x="146" y="302" class="st">Pq. Bustamante</text>
+          <circle cx="190" cy="318" r="4" fill="#1a1a1a" stroke="#f5c900" stroke-width="2"/>
+          <text x="155" y="322" class="st">Matta</text>
+          <circle cx="190" cy="358" r="4" fill="#1a1a1a" stroke="#f5c900" stroke-width="2"/>
+          <text x="155" y="362" class="st">Franklin</text>
+          <circle cx="190" cy="378" r="4" fill="#1a1a1a" stroke="#f5c900" stroke-width="2"/>
+          <circle cx="190" cy="398" r="4" fill="#1a1a1a" stroke="#f5c900" stroke-width="2"/>
+          <text x="152" y="402" class="st">Irarrazaval</text>
+          <circle cx="190" cy="418" r="4" fill="#1a1a1a" stroke="#f5c900" stroke-width="2"/>
+          <text x="155" y="422" class="st">Ñuble</text>
+          <circle cx="190" cy="438" r="4" fill="#1a1a1a" stroke="#f5c900" stroke-width="2"/>
+          <text x="155" y="442" class="st">Bío Bío</text>
+          <circle cx="190" cy="468" r="4" fill="#1a1a1a" stroke="#f5c900" stroke-width="2"/>
+          <text x="152" y="472" class="st">Rodrigo Araya</text>
+          <circle cx="190" cy="498" r="4" fill="#1a1a1a" stroke="#f5c900" stroke-width="2"/>
+          <text x="152" y="502" class="st">Carlos Valdovinos</text>
+          <circle cx="190" cy="530" r="4" fill="#1a1a1a" stroke="#f5c900" stroke-width="2"/>
+          <text x="155" y="534" class="st">San Miguel</text>
+          <circle cx="190" cy="560" r="4" fill="#1a1a1a" stroke="#f5c900" stroke-width="2"/>
+          <text x="155" y="564" class="st">Lo Valledor</text>
 
-          <circle cx="175" cy="370" r="5" fill="#0a0a0a" stroke="#00a84f" stroke-width="2"/>
+          <!-- La Cisterna: L2 + L4A (sin L4A, solo terminal L2) -->
+          <circle cx="190" cy="590" r="6" fill="#1a1a1a" stroke="#f5c900" stroke-width="2.5"/>
+          <text x="155" y="594" class="st">La Cisterna</text>
 
-          <circle cx="210" cy="370" r="5" fill="#0a0a0a" stroke="#00a84f" stroke-width="2"/>
-          <text x="214" y="367" fill="rgba(245,241,234,0.35)" font-size="6" font-family="IBM Plex Mono, monospace">Ñuñoa</text>
+          <!-- ===================== LÍNEA 4 — estaciones ===================== -->
+          <!-- Norte de Tobalaba: Los Leones, Pedro de Valdivia, Los Leones, El Golf ya en L1... -->
+          <circle cx="310" cy="180" r="4" fill="#1a1a1a" stroke="#1d4fa3" stroke-width="2"/>
+          <text x="316" y="184" class="st">Los Leones</text>
+          <circle cx="310" cy="150" r="4" fill="#1a1a1a" stroke="#1d4fa3" stroke-width="2"/>
+          <text x="316" y="154" class="st">Pedro de Valdivia</text>
+          <circle cx="310" cy="120" r="4" fill="#1a1a1a" stroke="#1d4fa3" stroke-width="2"/>
+          <text x="316" y="124" class="st">Cristóbal Colón</text>
+          <circle cx="310" cy="90" r="4" fill="#1a1a1a" stroke="#1d4fa3" stroke-width="2"/>
+          <text x="316" y="94" class="st">Francisco Bilbao</text>
+          <circle cx="310" cy="60" r="4" fill="#1a1a1a" stroke="#1d4fa3" stroke-width="2"/>
+          <text x="316" y="64" class="st">Príncipe de Gales</text>
+          <circle cx="310" cy="30" r="5" fill="#1a1a1a" stroke="#1d4fa3" stroke-width="2.5"/>
+          <text x="316" y="26" class="st">Simón Bolívar</text>
 
-          <circle cx="250" cy="370" r="5" fill="#0a0a0a" stroke="#00a84f" stroke-width="2"/>
-          <text x="254" y="367" fill="rgba(245,241,234,0.35)" font-size="6" font-family="IBM Plex Mono, monospace">Las Torres</text>
+          <!-- Sur de Tobalaba L4 -->
+          <circle cx="310" cy="258" r="4" fill="#1a1a1a" stroke="#1d4fa3" stroke-width="2"/>
+          <text x="316" y="262" class="st">Manuel Montt</text>
+          <circle cx="310" cy="288" r="4" fill="#1a1a1a" stroke="#1d4fa3" stroke-width="2"/>
+          <text x="316" y="292" class="st">Inés de Suárez</text>
+          <circle cx="310" cy="318" r="4" fill="#1a1a1a" stroke="#1d4fa3" stroke-width="2"/>
+          <text x="316" y="322" class="st">Chile España</text>
+          <circle cx="310" cy="348" r="4" fill="#1a1a1a" stroke="#1d4fa3" stroke-width="2"/>
+          <text x="316" y="352" class="st">Simón Bolívar</text>
+          <circle cx="310" cy="378" r="4" fill="#1a1a1a" stroke="#1d4fa3" stroke-width="2"/>
+          <text x="316" y="382" class="st">Villa Frei</text>
+          <circle cx="310" cy="408" r="4" fill="#1a1a1a" stroke="#1d4fa3" stroke-width="2"/>
+          <text x="316" y="412" class="st">Plaza Egaña</text>
+          <circle cx="310" cy="438" r="4" fill="#1a1a1a" stroke="#1d4fa3" stroke-width="2"/>
+          <text x="316" y="442" class="st">Los Orientales</text>
+          <circle cx="310" cy="468" r="4" fill="#1a1a1a" stroke="#1d4fa3" stroke-width="2"/>
+          <text x="316" y="472" class="st">Greca</text>
+          <circle cx="330" cy="498" r="4" fill="#1a1a1a" stroke="#1d4fa3" stroke-width="2"/>
+          <text x="336" y="502" class="st">Las Torres</text>
+          <circle cx="350" cy="530" r="4" fill="#1a1a1a" stroke="#1d4fa3" stroke-width="2"/>
+          <text x="356" y="534" class="st">Macul</text>
+          <circle cx="370" cy="560" r="4" fill="#1a1a1a" stroke="#1d4fa3" stroke-width="2"/>
+          <text x="376" y="564" class="st">Vicuña Mackenna</text>
 
-          <!-- Leyenda de líneas -->
-          <rect x="15" y="430" width="8" height="8" rx="2" fill="#e3001b"/>
-          <text x="27" y="438" fill="rgba(245,241,234,0.5)" font-size="7" font-family="IBM Plex Mono, monospace">Línea 1</text>
-          <rect x="75" y="430" width="8" height="8" rx="2" fill="#f47920"/>
-          <text x="87" y="438" fill="rgba(245,241,234,0.5)" font-size="7" font-family="IBM Plex Mono, monospace">Línea 2</text>
-          <rect x="135" y="430" width="8" height="8" rx="2" fill="#1d4fa3"/>
-          <text x="147" y="438" fill="rgba(245,241,234,0.5)" font-size="7" font-family="IBM Plex Mono, monospace">Línea 4</text>
-          <rect x="195" y="430" width="8" height="8" rx="2" fill="#00a84f"/>
-          <text x="207" y="438" fill="rgba(245,241,234,0.5)" font-size="7" font-family="IBM Plex Mono, monospace">Línea 5</text>
+          <!-- Plaza de Puente Alto terminal L4 -->
+          <circle cx="390" cy="590" r="6" fill="#1a1a1a" stroke="#1d4fa3" stroke-width="2.5"/>
+          <text x="358" y="608" class="st">Plaza Puente Alto</text>
 
-          <!-- Indicador U. de Chile -->
-          <circle cx="175" cy="200" r="16" fill="none" stroke="#c084f5" stroke-width="1" stroke-dasharray="3,3" opacity="0.6">
-            <animate attributeName="r" values="14;18;14" dur="2s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="0.6;0.2;0.6" dur="2s" repeatCount="indefinite"/>
-          </circle>
+          <!-- ===================== LÍNEA 5 — estaciones ===================== -->
+          <!-- Oeste: Plaza de Maipú -->
+          <circle cx="18" cy="338" r="5" fill="#1a1a1a" stroke="#00a84f" stroke-width="2"/>
+          <text x="10" y="332" class="st">Maipú</text>
+
+          <!-- Intermedias L5 oeste -->
+          <circle cx="40" cy="338" r="4" fill="#1a1a1a" stroke="#00a84f" stroke-width="2"/>
+          <circle cx="60" cy="338" r="4" fill="#1a1a1a" stroke="#00a84f" stroke-width="2"/>
+          <circle cx="80" cy="338" r="4" fill="#1a1a1a" stroke="#00a84f" stroke-width="2"/>
+          <circle cx="100" cy="338" r="4" fill="#1a1a1a" stroke="#00a84f" stroke-width="2"/>
+          <text x="84" y="332" class="st">Quinta Normal</text>
+
+          <circle cx="120" cy="338" r="4" fill="#1a1a1a" stroke="#00a84f" stroke-width="2"/>
+          <circle cx="140" cy="338" r="4" fill="#1a1a1a" stroke="#00a84f" stroke-width="2"/>
+          <circle cx="160" cy="338" r="4" fill="#1a1a1a" stroke="#00a84f" stroke-width="2"/>
+          <text x="144" y="352" class="st">Baquedano</text>
+
+          <!-- Post Parque O'Higgins (190,338 ya marcado) -->
+          <circle cx="210" cy="338" r="4" fill="#1a1a1a" stroke="#00a84f" stroke-width="2"/>
+          <text x="212" y="352" class="st">Pedrero</text>
+          <circle cx="230" cy="338" r="4" fill="#1a1a1a" stroke="#00a84f" stroke-width="2"/>
+          <text x="232" y="352" class="st">San Joaquín</text>
+          <circle cx="250" cy="338" r="4" fill="#1a1a1a" stroke="#00a84f" stroke-width="2"/>
+          <text x="252" y="352" class="st">Mirador</text>
+          <circle cx="270" cy="338" r="4" fill="#1a1a1a" stroke="#00a84f" stroke-width="2"/>
+          <circle cx="290" cy="338" r="4" fill="#1a1a1a" stroke="#00a84f" stroke-width="2"/>
+          <circle cx="310" cy="338" r="4" fill="#1a1a1a" stroke="#00a84f" stroke-width="2"/>
+          <circle cx="330" cy="338" r="4" fill="#1a1a1a" stroke="#00a84f" stroke-width="2"/>
+          <circle cx="350" cy="338" r="4" fill="#1a1a1a" stroke="#00a84f" stroke-width="2"/>
+          <circle cx="370" cy="338" r="4" fill="#1a1a1a" stroke="#00a84f" stroke-width="2"/>
+
+          <!-- L5 baja al sur -->
+          <circle cx="390" cy="370" r="4" fill="#1a1a1a" stroke="#00a84f" stroke-width="2"/>
+          <circle cx="390" cy="410" r="4" fill="#1a1a1a" stroke="#00a84f" stroke-width="2"/>
+          <circle cx="390" cy="450" r="4" fill="#1a1a1a" stroke="#00a84f" stroke-width="2"/>
+          <circle cx="390" cy="490" r="4" fill="#1a1a1a" stroke="#00a84f" stroke-width="2"/>
+          <circle cx="390" cy="530" r="4" fill="#1a1a1a" stroke="#00a84f" stroke-width="2"/>
+          <text x="396" y="410" class="st">La Granja</text>
+          <text x="396" y="490" class="st">San José de la Estrella</text>
+          <text x="396" y="530" class="st">Las Mercedes</text>
+
+          <!-- Vicente Valdés terminal L5 -->
+          <circle cx="390" cy="590" r="6" fill="#1a1a1a" stroke="#00a84f" stroke-width="2.5"/>
+          <text x="396" y="594" class="st">V. Valdés</text>
+
+          <!-- ===================== LEYENDA ===================== -->
+          <rect x="14" y="598" width="10" height="10" rx="2" fill="#e3001b"/>
+          <text x="28" y="607" class="st">L1</text>
+          <rect x="52" y="598" width="10" height="10" rx="2" fill="#f5c900"/>
+          <text x="66" y="607" class="st">L2</text>
+          <rect x="90" y="598" width="10" height="10" rx="2" fill="#1d4fa3"/>
+          <text x="104" y="607" class="st">L4</text>
+          <rect x="128" y="598" width="10" height="10" rx="2" fill="#00a84f"/>
+          <text x="142" y="607" class="st">L5</text>
 
         </svg>
         <div class="panel__caption">Metro de Santiago · circa 2010s<br>Líneas 1 · 2 · 4 · 5</div>
@@ -278,7 +409,20 @@ permalink: /
       REEMPLAZA ESTO con tu embed de Substack:
       Ve a substack.com > Settings > Embed > copia el iframe
     -->
-     <iframe src="https://lacourtcreations.substack.com/embed" width="300" height="320" style="border: 1px solid #EEE; background: white" frameborder="0" scrolling="no"></iframe>
+    <div class="newsletter__embed">
+      <div class="substack-card">
+        <div class="substack-card__icon">◉</div>
+        <div class="substack-card__title">Lacourt and Company Newsletter</div>
+        <div class="substack-card__sub">by Philipe Lacourt</div>
+        <div class="substack-card__form">
+          <input type="email" placeholder="Tu correo electrónico" class="substack-card__input" />
+          <button class="substack-card__btn">Suscribirse</button>
+        </div>
+        <div class="substack-card__legal">
+          Al suscribirte aceptas los términos de uso de Substack y nuestra política de privacidad.
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
